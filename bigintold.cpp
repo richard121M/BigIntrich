@@ -1,5 +1,7 @@
 #include "bigint.h"
 /* ACRESCENTAR */
+bool BigInt::isNeg() const {return neg;}
+int BigInt::size() const {return neg;}
 
 using namespace std;
 
@@ -13,9 +15,24 @@ BigInt::BigInt()
 {}
 
 /// Destrutor
+void BigInt::clear()
+{ 
+    delete[] d;
+    // Zera conteúdo
+    nDig = 0;
+    d = nullptr;
+}
+
+BigInt::~BigInt(){
+    clear();
+}
 /* ACRESCENTAR */
 
 /// Construtor especifico PRIVADO que recebe o sinal e a quantidade de digitos
+BigInt::BigInt(bool Neg, int NDig): 
+neg(Neg), 
+nDig(NDig)
+{}
 /* ACRESCENTAR */
 
 /// Construtor por copia.
